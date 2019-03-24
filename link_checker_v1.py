@@ -87,7 +87,7 @@ def execute_checker_non_parallel(links):
     bad_links_set = set()
 
     for link in links:
-        if check_link_status(link):
+        if check_link_status(link)[0]:
             good_links_set.add(link)
         else:
             bad_links_set.add(link)
@@ -96,10 +96,11 @@ def execute_checker_non_parallel(links):
 
 def main():
     link_set = create_unique_links_set()
-    # test_link_set = ('http://google.com', 'http://youtube.com')
 
-    # gl, bl = execute_checker_parallel(link_set)
-    gl, bl = execute_checker_non_parallel(link_set)
+    # test_link_set = ('http://google.com', 'http://youtube.com')
+    gl, bl = execute_checker_parallel(link_set)
+
+    # gl, bl = execute_checker_non_parallel(link_set)
 
     print(f"{len(gl)} <---unique good links ,unique bad links --->{len(bl)}")
 
